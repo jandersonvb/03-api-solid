@@ -1,4 +1,4 @@
-import { registerUseCase } from '@/use-cases/register.usecases'
+import { registerUseCase } from '@/use-cases/register.usecase'
 import { FastifyReply, FastifyRequest } from 'fastify'
 import { z } from 'zod'
 
