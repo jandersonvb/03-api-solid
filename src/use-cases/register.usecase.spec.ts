@@ -8,9 +8,9 @@ describe('Register Use Case', () => {
   it('should be able to register a new user', async () => {
     const usersRepository = new InMemoryUsersRepository()
 
-    const registerUseCase = new RegisterUseCase(usersRepository)
+    const sut = new RegisterUseCase(usersRepository)
 
-    const { user } = await registerUseCase.execute({
+    const { user } = await sut.execute({
       name: 'John Doe',
       email: 'johndoe@example.com',
       password: '123456'
@@ -38,17 +38,17 @@ describe('Register Use Case', () => {
   it('should not be able to register with same email twice', async () => {
     const usersRepository = new InMemoryUsersRepository()
 
-    const registerUseCase = new RegisterUseCase(usersRepository)
+    const sut = new RegisterUseCase(usersRepository)
 
     const email = 'johndoe@example.com'
 
-    await registerUseCase.execute({
+    await sut.execute({
       name: 'John Doe',
       email,
       password: '123456'
     })
 
-    await expect(() => registerUseCase.execute({
+    await expect(() => sut.execute({
       name: 'John Doe',
       email,
       password: '123456'
